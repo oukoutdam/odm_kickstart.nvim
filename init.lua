@@ -190,6 +190,11 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- custom keymap: toggle nerdtree view
+vim.keymap.set('n', '<C-e>', function()
+  vim.cmd 'NERDTreeToggle'
+end, { desc = 'Toggle Nerdtree window' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
@@ -227,6 +232,11 @@ vim.opt.rtp:prepend(lazypath)
 require('lazy').setup({
   -- NOTE: Plugins can be added with a link (or for a github repo: 'owner/repo' link).
   'tpope/vim-sleuth', -- Detect tabstop and shiftwidth automatically
+  -- custom plutins for nerdtree
+  'preservim/nerdtree',
+  'ryanoasis/vim-devicons',
+  'Xuyuanp/nerdtree-git-plugin',
+  'tiagofumo/vim-nerdtree-syntax-highlight',
 
   -- NOTE: Plugins can also be added by using a table,
   -- with the first argument being the link and the following
@@ -632,7 +642,7 @@ require('lazy').setup({
         --
         -- You can use a sub-list to tell conform to run *until* a formatter
         -- is found.
-        -- javascript = { { 'prettierd', 'prettier' } },
+        javascript = { { 'prettierd', 'prettier' } },
       },
     },
   },
